@@ -65,6 +65,11 @@
                 <a class="nav-link" href="contactanos.html">Contactanos <span class="sr-only">(current)</span></a>
               </li>
             </ul>
+            <!-- carrito -->
+            <button class="button" class="carrito" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+               <img src="../imagenes/carrito.png" alt="">
+              <span id="contador" class="badge bg-dark text-white ms-1 rounded-pill" class="sr-only">0</span>
+            </button>
           </div>
         </nav>
       </header>
@@ -131,24 +136,26 @@
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192339.1036015053!2d-71.47999991968112!3d-41.12800938202036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961a7b1520c860e5%3A0x8210ae97cb7b9a65!2sSan%20Carlos%20de%20Bariloche%2C%20R%C3%ADo%20Negro!5e0!3m2!1ses-419!2sar!4v1625769299878!5m2!1ses-419!2sar" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </footer>
-      <!-- Modal -->
+      <!-- Modal Carrito-->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Contactanos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Disculpa este producto no esta disponible.
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-modal" data-dismiss="modal">Cerrar</button>
-             </div>
+        <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Productos agregados</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
           </div>
+          <div id="prodcutos-agregados" class="modal-body"></div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-modal" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        </div>
       </div>
+      <!-- JS -->
+      <script src='../script/main.js'></script>
+      <!-- bootstrap y animaciones -->
       <script src="../js/jquery-3.5.1.slim.min.js"></script>
       <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

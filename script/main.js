@@ -1,4 +1,3 @@
-// llevarlo a productos
 class Cascos{
     constructor(marca, color, precio, img) {
         this.marca = marca;
@@ -22,9 +21,6 @@ const producto3 = new Cascos("Blizzard", "Blanco", "450", "../imagenes/shred3.jp
 const baseDeDatos = [producto1, producto2, producto3];
 
 // Tarjetas
-
-
-
 function tarjetas() {
     let acumulador=``
 
