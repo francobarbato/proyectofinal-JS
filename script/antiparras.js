@@ -1,12 +1,3 @@
-class Cascos{
-    constructor(marca, color, precio, img) {
-        this.marca = marca;
-        this.color  = color;
-        this.precio = precio;
-        this.img = img;
-    }    
-}
-
 let carrito = [];
 
 if(localStorage.carrito != null){
@@ -14,11 +5,20 @@ if(localStorage.carrito != null){
     document.getElementById("contador").innerHTML = carrito.length;
 }
 
-const producto1 = new Cascos("Shred", "Negro", "300", "../imagenes/shred1.jpg");
-const producto2 = new Cascos("Salomon", "Rojo", "200", "../imagenes/shred2.jpg");
-const producto3 = new Cascos("Blizzard", "Blanco", "450", "../imagenes/shred3.jpg");
+class Antiparras{
+    constructor(marca, nombre, precio, img) {
+        this.marca = marca;
+        this.nombre  = nombre;
+        this.precio = precio;
+        this.img = img;
+    }    
+}
 
-const baseDeDatos = [producto1, producto2, producto3];
+const producto_uno = new Antiparras("Shred", "SIMPLIFY+ ", "300", "../imagenes/Antiparras1.jpg");
+const producto_dos = new Antiparras("Shred", "AMAZIFY ", "200", "../imagenes/Antiparras02.jpg");
+const producto_tres = new Antiparras("Shred", "RARIFY", "450", "../imagenes/Antiparras03.jpg");
+
+const baseDeDatos = [producto_uno, producto_dos, producto_tres];
 
 // Tarjetas
 function tarjetas() {
@@ -32,6 +32,8 @@ function tarjetas() {
                 <img src="${productos.img}" class="card-img-top">
                 <div class="card-body">
                     <h3 class="card-title titulos">${productos.marca}</h3>
+                    <h4 class="card-title titulos">${productos.nombre}</h4>
+                    <p class="card-text parrafos">SHRED.wide | Antiparras diseñadas y fabricadas para maximizar tu campo de visión.</p>
                     <p class="card-text cardparrafo">$${productos.precio} </p>
                     <a href="#" type="button" class="btn btn-primary" id="button" onclick="agregar('${productos.marca}')">Agregar al carrito</a>
                 </div>
@@ -39,7 +41,7 @@ function tarjetas() {
         </div>
     </article>`
 });
-$('#cards').html(acumulador)
+document.getElementById("cardsAntiparras").innerHTML = acumulador;
 
 }
 tarjetas();
@@ -60,8 +62,6 @@ function agregar(marca){
     console.log(carrito);
 }
 
-
- 
 const addCarro = document.getElementById("button")
 
 const div = document.getElementById("respuesta")
@@ -71,6 +71,3 @@ addCarro.addEventListener("click", respuesta)
 function respuesta(){
   console.log("Se agrego el producto al carrito");
 }
-
-
-

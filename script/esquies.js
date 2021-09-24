@@ -1,12 +1,3 @@
-class Cascos{
-    constructor(marca, color, precio, img) {
-        this.marca = marca;
-        this.color  = color;
-        this.precio = precio;
-        this.img = img;
-    }    
-}
-
 let carrito = [];
 
 if(localStorage.carrito != null){
@@ -14,11 +5,19 @@ if(localStorage.carrito != null){
     document.getElementById("contador").innerHTML = carrito.length;
 }
 
-const producto1 = new Cascos("Shred", "Negro", "300", "../imagenes/shred1.jpg");
-const producto2 = new Cascos("Salomon", "Rojo", "200", "../imagenes/shred2.jpg");
-const producto3 = new Cascos("Blizzard", "Blanco", "450", "../imagenes/shred3.jpg");
+class Esquies{
+    constructor(marca, precio, img) {
+        this.marca = marca;
+        this.precio = precio;
+        this.img = img;
+    }    
+}
 
-const baseDeDatos = [producto1, producto2, producto3];
+const producto_uno = new Esquies("BLIZZARD QUATTRO S 70", "500", "../imagenes/blizzard1.png");
+const producto_dos = new Esquies("BLIZZARD QUATTRO RS 76", "550", "../imagenes/blizzard2.png");
+const producto_tres = new Esquies("BLIZZARD QUATTRO S 70", "490", "../imagenes/blizzard3.png");
+
+const baseDeDatos = [producto_uno, producto_dos, producto_tres];
 
 // Tarjetas
 function tarjetas() {
@@ -39,7 +38,7 @@ function tarjetas() {
         </div>
     </article>`
 });
-$('#cards').html(acumulador)
+document.getElementById("cardsEsquies").innerHTML = acumulador;
 
 }
 tarjetas();
@@ -60,8 +59,6 @@ function agregar(marca){
     console.log(carrito);
 }
 
-
- 
 const addCarro = document.getElementById("button")
 
 const div = document.getElementById("respuesta")
@@ -71,6 +68,3 @@ addCarro.addEventListener("click", respuesta)
 function respuesta(){
   console.log("Se agrego el producto al carrito");
 }
-
-
-
