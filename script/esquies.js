@@ -25,7 +25,6 @@ function tarjetas() {
 
     baseDeDatos.forEach((productos)=> {
     acumulador += `
-    <article class="row">
         <div class="col-12 col-md-4 mt-3 mt-md-5">
             <div class="card">
                 <img src="${productos.img}" class="card-img-top">
@@ -35,8 +34,7 @@ function tarjetas() {
                     <a href="#" type="button" class="btn btn-primary" id="button" onclick="agregar('${productos.marca}')">Agregar al carrito</a>
                 </div>
             </div>
-        </div>
-    </article>`
+        </div>`
 });
 document.getElementById("cardsEsquies").innerHTML = acumulador;
 
@@ -49,22 +47,62 @@ function agregar(marca){
 
     if(productoEncontrado != undefined){
         carrito.push(productoEncontrado);
+        guardarCarrito();
     }
-    const storage = localStorage.carrito = JSON.stringify(carrito);
-
-    $('#contador').html(carrito.length);
-
-    document.getElementById("prodcutos-agregados").innerHTML = storage;
-
-    console.log(carrito);
+     
+    document.getElementById("contador").innerHTML = carrito.length;
+    
+    imprimirCardsCarrito();
 }
 
-const addCarro = document.getElementById("button")
 
-const div = document.getElementById("respuesta")
+function imprimirCardsCarrito() {
 
-addCarro.addEventListener("click", respuesta)
+    $("#cardCarrito").html(``);
+    
+    for (let productos of carrito) {
+        
+        $("#cardCarrito").append(
+            `<div class="card" id="${productos.marca}">
+            <img src="${productos.img}" class="card-img-top">
+            <div class="card-body">
+            <h3 class="card-title titulos">${productos.marca} <span class="badge badge-light border border-dark">agotado</span></h3>
+            <p class="card-text parrafos">SHRED.wide | Antiparras diseñadas y fabricadas para maximizar tu campo de visión.</p>
+            <p class="card-text cardparrafo">$${productos.precio} </p>
+            <a href="#" type="button" class="btn btn-primary" id="button" onclick="eliminarDelCarrito('${productos.marca}')">Eliminar producto</a>
+            </div>`);
+            
+        }
+        
+        if(carrito.length == 0){
 
-function respuesta(){
-  console.log("Se agrego el producto al carrito");
-}
+            $("#mensajeCarrito").html(
+                `<div>
+                <p>No tenes ningun producto en el carrito</p>
+                </div>`);
+            }
+    } 
+        
+    imprimirCardsCarrito();
+
+    function eliminarDelCarrito(marca) {
+    
+        carrito = carrito.filter(productos => productos.marca !== marca);
+    
+        const cardEliminada = document.getElementById(marca);
+        
+        cardEliminada.parentNode.removeChild(cardEliminada);  
+        
+        document.getElementById("contador").innerHTML = carrito.length;
+        
+        imprimirCardsCarrito();
+        
+        guardarCarrito();
+        
+    }
+    eliminarDelCarrito();
+
+    function guardarCarrito() {
+
+        localStorage.carrito = JSON.stringify(carrito);
+    }
