@@ -55,11 +55,11 @@ function agregar(marca){
      
     document.getElementById("contador").innerHTML = carrito.length;
     
-    imprimirCardsCarrito();
+    cradCarrito();
 }
 
 
-function imprimirCardsCarrito() {
+function cradCarrito() {
 
     $("#cardCarrito").html(``);
     
@@ -69,24 +69,17 @@ function imprimirCardsCarrito() {
             `<div class="card" id="${productos.marca}">
             <img src="${productos.img}" class="card-img-top">
             <div class="card-body">
-            <h3 class="card-title titulos">${productos.marca} <span class="badge badge-light border border-dark">agotado</span></h3>
+            <h3 class="card-title titulos">${productos.marca}</h3>
             <p class="card-text parrafos">SHRED.wide | Antiparras diseñadas y fabricadas para maximizar tu campo de visión.</p>
             <p class="card-text cardparrafo">$${productos.precio} </p>
             <a href="#" type="button" class="btn btn-primary" id="button" onclick="eliminarDelCarrito('${productos.marca}')">Eliminar producto</a>
             </div>`);
             
         }
-        
-        if(carrito.length == 0){
-
-            $("#mensajeCarrito").html(
-                `<div>
-                <p>No tenes ningun producto en el carrito</p>
-                </div>`);
-            }
+        precioTotal();
     } 
         
-    imprimirCardsCarrito();
+    cradCarrito();
 
     function eliminarDelCarrito(marca) {
     
@@ -98,7 +91,7 @@ function imprimirCardsCarrito() {
         
         document.getElementById("contador").innerHTML = carrito.length;
         
-        imprimirCardsCarrito();
+        cradCarrito();
         
         guardarCarrito();
         
@@ -109,3 +102,20 @@ function imprimirCardsCarrito() {
 
         localStorage.carrito = JSON.stringify(carrito);
     }
+
+    function precioTotal() {
+
+        $("#total").html(``);
+        
+        for (let productos of carrito) {
+            
+            $("#total").append(
+                `<div class="" id="${productos.marca}">
+                <hr>
+                <p>Precio total:'${productos.precio}'</p>
+                </div>`);
+                
+            }
+    } 
+            
+    precioTotal();
